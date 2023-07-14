@@ -28,11 +28,11 @@ buttonMoreDescription.addEventListener('click', e => {
 /***/ (() => {
 
 const adminList = document.querySelector('.admin-list');
-fetch('https://v2009105.hosted-by-vdsina.ru/sendAdminList').then(request => request.json()).then(admins => {
+fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList').then(request => request.json()).then(admins => {
   admins.result.forEach(element => {
-    fetch(`https://v2009105.hosted-by-vdsina.ru/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
+    fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
       const photoInfo = data.result.photos[0][0];
-      fetch(`https://v2009105.hosted-by-vdsina.ru/sendAdminPhotoInfo/${photoInfo.file_id}`).then(response => response.blob()).then(img => {
+      fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminPhotoInfo/${photoInfo.file_id}`).then(response => response.blob()).then(img => {
         const imgUrl = URL.createObjectURL(img);
         const admin = document.createElement('li');
         admin.classList.add('admin-list__element');
