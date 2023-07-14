@@ -1,0 +1,82 @@
+/*!***********************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./sass/main.sass ***!
+  \***********************************************************************************************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-color: #54084c; }
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: url(../img/1688975928719.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 60vh; }
+  .header-container__header {
+    text-align: center;
+    color: white; }
+  .header-container h1 {
+    padding: 0 10px;
+    margin-bottom: 0;
+    background: linear-gradient(45deg, #54084c 0%, rgba(3, 3, 4, 0.5) 58%);
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: #e4e3ff; }
+
+.link-logo {
+  width: 70px;
+  height: 70px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px; }
+  .link-logo:hover {
+    opacity: 0.5; }
+
+.admin-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+  list-style: none; }
+  .admin-list__photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; }
+  .admin-list__name {
+    color: white;
+    text-align: center; }
+  .admin-list__admin-castom-name {
+    color: #b6b0b0;
+    text-align: center; }
+
+.main-container__header {
+  margin-top: 10px;
+  text-align: center;
+  color: white;
+  text-decoration: underline; }
+
+.main-container__description {
+  color: white;
+  padding: 2px 10px;
+  text-align: center;
+  opacity: 0.9; }
+  .main-container__description--hidden {
+    height: 0;
+    overflow: hidden; }
+
+.more-button {
+  display: block;
+  margin: 0 auto;
+  background-color: inherit;
+  border-color: black;
+  color: white;
+  margin-top: 5px; }
+
+
+/*# sourceMappingURL=main.css.map*/
