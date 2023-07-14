@@ -28,11 +28,11 @@ buttonMoreDescription.addEventListener('click', e => {
 /***/ (() => {
 
 const adminList = document.querySelector('.admin-list');
-fetch('http://77.246.96.226:3001/sendAdminList').then(request => request.json()).then(admins => {
+fetch('https://77.246.96.226:3001/sendAdminList').then(request => request.json()).then(admins => {
   admins.result.forEach(element => {
-    fetch(`http://77.246.96.226:3001/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
+    fetch(`https://77.246.96.226:3001/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
       const photoInfo = data.result.photos[0][0];
-      fetch(`http://77.246.96.226:3001/sendAdminPhotoInfo/${photoInfo.file_id}`).then(response => response.blob()).then(img => {
+      fetch(`https://77.246.96.226:3001/sendAdminPhotoInfo/${photoInfo.file_id}`).then(response => response.blob()).then(img => {
         const imgUrl = URL.createObjectURL(img);
         const admin = document.createElement('li');
         admin.classList.add('admin-list__element');
@@ -64,7 +64,7 @@ fetch('http://77.246.96.226:3001/sendAdminList').then(request => request.json())
 
 const header = document.querySelector('.header-container').querySelector('h1');
 const chatMembersCount = document.createElement('p');
-fetch('http://77.246.96.226:3001/sendUsersCount').then(request => request.json()).then(data => {
+fetch('https://77.246.96.226:3001/sendUsersCount').then(request => request.json()).then(data => {
   chatMembersCount.textContent = `Нас уже ${data.result}, стань ${data.result + 1}!`;
   chatMembersCount.style = 'margin-top: 5px';
   header.appendChild(chatMembersCount);
