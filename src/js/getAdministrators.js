@@ -1,15 +1,15 @@
 const adminList = document.querySelector('.admin-list');
 
-fetch('https://77.246.96.226:3001/sendAdminList')
+fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
     .then(request => request.json())
     .then(admins => {
         admins.result.forEach(element => {
-            fetch(`https://77.246.96.226:3001/sendAdminInfo/${element.user.id}`)
+            fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminInfo/${element.user.id}`)
                 .then(response => response.json())
                 .then(data => {
                     const photoInfo = data.result.photos[0][0];
 
-                    fetch(`https://77.246.96.226:3001/sendAdminPhotoInfo/${photoInfo.file_id}`)
+                    fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminPhotoInfo/${photoInfo.file_id}`)
                         .then(response => response.blob())
                         .then(img => {
                             const imgUrl = URL.createObjectURL(img);
