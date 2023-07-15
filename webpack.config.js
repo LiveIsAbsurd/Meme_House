@@ -91,7 +91,7 @@ module.exports = {
     entry: './js/main.js',
     output: {
         filename: `./js/${filename('js')}`,
-        path: path.resolve(__dirname, 'app'),
+        path: path.resolve(__dirname, 'docs'),
         clean: true,
         publicPath: '',
     },
