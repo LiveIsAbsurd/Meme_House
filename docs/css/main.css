@@ -18,6 +18,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   background-image: url(../img/1688975928719.gif);
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 60vh; }
