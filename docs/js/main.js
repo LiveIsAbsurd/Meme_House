@@ -28,6 +28,15 @@ buttonMoreDescription.addEventListener('click', e => {
 /***/ (() => {
 
 const adminList = document.querySelector('.admin-list');
+const popup = document.querySelector('.popup');
+const popupAdminPhoto = popup.querySelector('.popup__admin-photo');
+const popupAdminName = popup.querySelector('.popup__admin-name');
+const popupAdminCastomName = popup.querySelector('.popup__admin-castomName');
+const popupClose = popup.querySelector('.popup__close-button');
+popupClose.addEventListener('click', () => {
+  popup.classList.add('popup--hidden');
+  popupAdminPhoto.classList.remove('admin-list__vip-user');
+});
 fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList').then(request => request.json()).then(admins => {
   admins.result.forEach(element => {
     fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
@@ -57,6 +66,9 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList').then(request =>
         const adminCastomName = document.createElement('p');
         adminCastomName.classList.add('admin-list__admin-castom-name');
         adminCastomName.textContent = element.custom_title;
+        admin.addEventListener('click', () => {
+          setAdminPopup(imgUrl, element.user.first_name, element.custom_title, element.user.username);
+        });
         admin.appendChild(adminName);
         admin.appendChild(adminCastomName);
         adminList.appendChild(admin);
@@ -64,6 +76,23 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList').then(request =>
     });
   });
 });
+
+function setAdminPopup(img, name, castomName, userName) {
+  let windowHeight = window.innerHeight;
+  let popupHeight = popup.offsetHeight;
+  let scrollY = window.scrollY;
+  let topOffset = (windowHeight - popupHeight) / 2 + scrollY;
+  popup.style.top = topOffset + 'px';
+  popup.classList.remove('popup--hidden');
+  popupAdminPhoto.src = img;
+  popupAdminName.textContent = name;
+  popupAdminName.href = `https://${userName}.t.me`;
+  popupAdminCastomName.textContent = castomName;
+
+  if (userName == 'LiveIsAbsurd') {
+    popupAdminPhoto.classList.add('admin-list__vip-user');
+  }
+}
 
 /***/ }),
 
@@ -159,7 +188,7 @@ var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
 var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_1___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n    </div>\r\n    <div class=\"popup\">\r\n        \r\n    </div>\r\n</body>\r\n</html>";
+var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_1___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n    </div>\r\n    <div class=\"popup popup--hidden\">\r\n        <button class=\"popup__close-button\"></button>\r\n        <div class=\"popup__admin-info\">\r\n            <img  class=\"popup__admin-photo\"></img>\r\n            <div class=\"popup__admin-names\">\r\n                <a href = '#' class=\"popup__admin-name\">Тестds gdsgdsg</a>\r\n                <p class=\"popup__admin-castomName\">Тестdsgd sgdsgds</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"popup__admin-description\"></div>\r\n    </div>\r\n</body>\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
