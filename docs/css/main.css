@@ -207,7 +207,7 @@ body {
     flex-direction: row; }
     .popup__admin-info {
       flex-direction: column;
-      width: 40%;
+      width: 70%;
       height: 100%; }
     .popup__admin-photo {
       margin: 0 auto;
