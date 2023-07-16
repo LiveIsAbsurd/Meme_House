@@ -69,6 +69,8 @@ body {
   .admin-list li {
     margin-top: 10px;
     cursor: pointer; }
+    .admin-list li:focus {
+      outline: none; }
   .admin-list__photo {
     margin-left: 10px;
     margin-right: 10px;
