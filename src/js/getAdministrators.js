@@ -1,4 +1,14 @@
 const adminList = document.querySelector('.admin-list');
+const popup = document.querySelector('.popup');
+const popupAdminPhoto = popup.querySelector('.popup__admin-photo');
+const popupAdminName = popup.querySelector('.popup__admin-name');
+const popupAdminCastomName = popup.querySelector('.popup__admin-castomName');
+const popupClose = popup.querySelector('.popup__close-button');
+
+popupClose.addEventListener('click', () => {
+    popup.classList.add('popup--hidden');
+    popupAdminPhoto.classList.remove('admin-list__vip-user');
+});
 
 fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
     .then(request => request.json())
@@ -40,8 +50,12 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
                             adminCastomName.classList.add('admin-list__admin-castom-name');
                             adminCastomName.textContent = element.custom_title;
 
+                            admin.addEventListener('click', () => {
+                                setAdminPopup(imgUrl, element.user.first_name, element.custom_title, element.user.username);
+                            });
+
                             admin.appendChild(adminName);
-                            admin.appendChild(adminCastomName)
+                            admin.appendChild(adminCastomName);
                             
 
                             adminList.appendChild(admin);
@@ -49,3 +63,22 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
                     })
                 })
         })
+
+function setAdminPopup (img, name, castomName, userName) {
+    let windowHeight = window.innerHeight;
+    let popupHeight = popup.offsetHeight;
+    let scrollY = window.scrollY;
+
+    let topOffset = (windowHeight - popupHeight) / 2 + scrollY;
+    popup.style.top = topOffset + 'px';
+
+    popup.classList.remove('popup--hidden');
+    popupAdminPhoto.src = img;
+    popupAdminName.textContent = name;
+    popupAdminName.href = `https://${userName}.t.me`;
+    popupAdminCastomName.textContent = castomName;
+
+    if (userName == 'LiveIsAbsurd') {
+        popupAdminPhoto.classList.add('admin-list__vip-user');
+    }
+}

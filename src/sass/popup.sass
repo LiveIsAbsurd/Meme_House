@@ -1,0 +1,77 @@
+.popup
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: #290325
+    opacity: 0.95
+    
+
+    display: flex
+
+    flex-direction: column
+
+
+    height: 500px
+    width: 400px
+    &--hidden
+        display: none
+    &__close-button
+        position: absolute
+        top: 0
+        right: 0
+        height: 40px
+        width: 40px
+        background-color: inherit
+        background-image: url(../assets/crosslinear_106242.svg)
+    &__admin-info
+        word-wrap: break-word
+        display: flex
+        justify-content: space-between
+        
+        padding: 20px
+        padding-right: 60px
+        height: 35%
+        font-family: Zlusa
+        font-size: 25px
+        color: white
+    &__admin-photo
+        box-shadow: 0 0 15px 5px black
+        border: 1px solid black
+        margin: auto 0
+        height: 100px
+        width: 100px
+        border-radius: 50%
+    &__admin-names
+        display: flex
+        justify-content: space-around
+        flex-direction: column
+    &__admin-name, &__admin-castomName
+        text-align:  center
+    &__admin-name
+        text-decoration: none
+        font-size: 30px
+        font-weight: 800
+
+@media (min-width: 650px) 
+    .popup
+        height: 400px
+        width: 600px
+
+        justify-content: space-between
+        flex-direction: row
+        &__admin-info
+            flex-direction: column
+            width: 40%
+            height: 100%
+        &__admin-photo
+            margin: 0 auto
+            height: 100px
+            width: 100px
+            background-color: white
+            border-radius: 50%
+        &__admin-names
+            font-size: 40px
+        
+        
+        
