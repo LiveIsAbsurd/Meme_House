@@ -12,10 +12,10 @@ const mainDescription = document.querySelector('.main-container__description');
 buttonMoreDescription.addEventListener('click', e => {
   mainDescription.classList.toggle('main-container__description--hidden');
 
-  if (buttonMoreDescription.textContent == 'Скрыть') {
-    buttonMoreDescription.textContent = 'А подробнее?';
+  if (buttonMoreDescription.textContent == 'СКРЫТЬ') {
+    buttonMoreDescription.textContent = 'А ПОДРОБНЕЕ?';
   } else {
-    buttonMoreDescription.textContent = 'Скрыть';
+    buttonMoreDescription.textContent = 'СКРЫТЬ';
   }
 });
 
@@ -39,10 +39,21 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList').then(request =>
         const adminPhoto = document.createElement('img');
         adminPhoto.classList.add('admin-list__photo');
         adminPhoto.src = imgUrl;
+
+        if (element.user.username == 'LiveIsAbsurd') {
+          adminPhoto.classList.add('admin-list__vip-user');
+        }
+
         admin.appendChild(adminPhoto);
         const adminName = document.createElement('p');
         adminName.classList.add('admin-list__name');
-        adminName.textContent = element.user.first_name;
+
+        if (element.user.username == 'meme_house_bot') {
+          adminName.textContent = 'Meme House';
+        } else {
+          adminName.textContent = element.user.first_name;
+        }
+
         const adminCastomName = document.createElement('p');
         adminCastomName.classList.add('admin-list__admin-castom-name');
         adminCastomName.textContent = element.custom_title;
@@ -143,10 +154,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
-var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/telegram-svgrepo-com.svg */ "./assets/telegram-svgrepo-com.svg"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./img/1688975928719.gif */ "./img/1688975928719.gif"), __webpack_require__.b);
+var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/telegram-svgrepo-com.svg */ "./assets/telegram-svgrepo-com.svg"), __webpack_require__.b);
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_0___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А подробнее?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n    </div>\r\n</body>\r\n</html>";
+var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
+var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_1___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n    </div>\r\n    <div class=\"popup\">\r\n        \r\n    </div>\r\n</body>\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -173,6 +186,17 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 module.exports = __webpack_require__.p + "img/telegram-svgrepo-com.svg";
+
+/***/ }),
+
+/***/ "./img/1688975928719.gif":
+/*!*******************************!*\
+  !*** ./img/1688975928719.gif ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "img/1688975928719.gif";
 
 /***/ })
 

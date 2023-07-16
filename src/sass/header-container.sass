@@ -7,16 +7,34 @@
     background-repeat: no-repeat
 
     height: 60vh
-    &__header
-        text-align: center
-        color: white
+    &__image
+        display: none
     
     h1
+        font-family: Zlusa
+        font-size: 28px
+
         padding: 0 10px
         margin-bottom: 0
-        background: linear-gradient(45deg, rgba(84,8,76,1) 0%, rgba(3, 3, 4, 0.5) 58%);
-        font-size: 20px
-        font-weight: 600
+        background: linear-gradient(45deg, rgba(84,8,76,1) 0%, rgba(3, 3, 4, 0.5) 58%)
+        font-weight: 400
 
         text-align: center
-        color: #e4e3ff
+        color: white
+
+@media (min-width: 650px) 
+    .header-container
+        padding: 20px
+        justify-content: stretch
+        flex-direction: row
+        background: none
+        h1
+            font-size: 35px
+
+            background: none
+            margin: auto auto
+
+        &__image
+            display: block
+            box-shadow: 0 0 15px 5px black
+

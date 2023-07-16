@@ -21,12 +21,21 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
                             adminPhoto.classList.add('admin-list__photo');
                             adminPhoto.src = imgUrl;
 
+                            if (element.user.username == 'LiveIsAbsurd') {
+                                adminPhoto.classList.add('admin-list__vip-user');
+                            }
+
                             admin.appendChild(adminPhoto);
 
                             const adminName = document.createElement('p');
                             adminName.classList.add('admin-list__name');
-                            adminName.textContent = element.user.first_name;
-
+                            if (element.user.username == 'meme_house_bot') {
+                                adminName.textContent = 'Meme House';
+                            } else {
+                                adminName.textContent = element.user.first_name;
+                            }
+                            
+                            
                             const adminCastomName = document.createElement('p');
                             adminCastomName.classList.add('admin-list__admin-castom-name');
                             adminCastomName.textContent = element.custom_title;

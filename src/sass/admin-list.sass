@@ -1,19 +1,46 @@
 .admin-list
+    font-family: Zlusa
+    font-size: 25px
+    line-height: 25px
+
     display: flex
     justify-content: space-between
     flex-wrap: wrap
 
     padding: 20px
     list-style: none
-    &__element
+    li
+        margin-top: 10px
 
     &__photo
+
+        margin-left: 10px
+        margin-right: 10px
+        box-shadow: 0 0 15px 5px black
         width: 100px
         height: 100px
         border-radius: 50%
+        border: 1px solid black
     &__name
         color: white
         text-align: center
     &__admin-castom-name
         color: #b6b0b0
         text-align: center
+    &__vip-user
+        animation: vip-shadow 0.5s infinite alternate
+        border: 2px solid gold
+
+@keyframes vip-shadow
+    0%
+        box-shadow: 0 0 15px 0px gold
+    20%
+        box-shadow: 0 0 15px 1px gold
+    40%
+        box-shadow: 0 0 15px 2px gold
+    60%
+        box-shadow: 0 0 15px 3px gold
+    80%
+        box-shadow: 0 0 15px 4px gold
+    100%
+        box-shadow: 0 0 15px 5px gold
