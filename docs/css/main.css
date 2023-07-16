@@ -145,6 +145,7 @@ body {
   transform: translate(-50%, -50%);
   background-color: #290325;
   opacity: 0.95;
+  font-family: Zlusa;
   display: flex;
   flex-direction: column;
   height: 500px;
@@ -166,7 +167,6 @@ body {
     padding: 20px;
     padding-right: 60px;
     height: 35%;
-    font-family: Zlusa;
     font-size: 25px;
     color: white; }
   .popup__admin-photo {
@@ -186,6 +186,18 @@ body {
     text-decoration: none;
     font-size: 30px;
     font-weight: 800; }
+  .popup__admin-desc-header {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    text-decoration: underline; }
+  .popup__admin-description {
+    color: white;
+    margin: 10px;
+    font-size: 30px; }
+  .popup__wrapper {
+    margin: 0 auto; }
 
 @media (min-width: 650px) {
   .popup {

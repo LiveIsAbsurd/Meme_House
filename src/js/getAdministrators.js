@@ -3,6 +3,7 @@ const popup = document.querySelector('.popup');
 const popupAdminPhoto = popup.querySelector('.popup__admin-photo');
 const popupAdminName = popup.querySelector('.popup__admin-name');
 const popupAdminCastomName = popup.querySelector('.popup__admin-castomName');
+const adminDescription = popup.querySelector('.popup__admin-description');
 const popupClose = popup.querySelector('.popup__close-button');
 
 popupClose.addEventListener('click', () => {
@@ -50,15 +51,17 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
                             adminCastomName.classList.add('admin-list__admin-castom-name');
                             adminCastomName.textContent = element.custom_title;
 
-                            admin.addEventListener('click', () => {
-                                setAdminPopup(imgUrl, element.user.first_name, element.custom_title, element.user.username);
-                            });
+                            
 
                             admin.appendChild(adminName);
                             admin.appendChild(adminCastomName);
                             
 
                             adminList.appendChild(admin);
+
+                            admin.addEventListener('click', () => {
+                                setAdminPopup(imgUrl, element.user.first_name, element.custom_title, element.user.username);
+                            });
                         })
                     })
                 })
@@ -72,7 +75,6 @@ function setAdminPopup (img, name, castomName, userName) {
     let topOffset = (windowHeight - popupHeight) / 2 + scrollY;
     popup.style.top = topOffset + 'px';
 
-    popup.classList.remove('popup--hidden');
     popupAdminPhoto.src = img;
     popupAdminName.textContent = name;
     popupAdminName.href = `https://${userName}.t.me`;
@@ -81,4 +83,11 @@ function setAdminPopup (img, name, castomName, userName) {
     if (userName == 'LiveIsAbsurd') {
         popupAdminPhoto.classList.add('admin-list__vip-user');
     }
+
+    fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userName.toLowerCase()}`)
+        .then(response => response.json())
+        .then(description => {
+            adminDescription.textContent = description;
+            popup.classList.remove('popup--hidden');
+        })
 }
