@@ -136,7 +136,8 @@ body {
   padding: 0 5px 0 5px;
   font-family: Zlusa;
   font-size: 18px;
-  font-weight: 200; }
+  font-weight: 200;
+  cursor: pointer; }
 
 .popup {
   position: absolute;
@@ -159,7 +160,8 @@ body {
     height: 40px;
     width: 40px;
     background-color: inherit;
-    background-image: url(../img/crosslinear_106242.svg); }
+    background-image: url(../img/crosslinear_106242.svg);
+    cursor: pointer; }
   .popup__admin-info {
     word-wrap: break-word;
     display: flex;
