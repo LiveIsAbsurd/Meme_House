@@ -71,14 +71,14 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList').then(request =>
         admin.appendChild(adminCastomName);
         adminList.appendChild(admin);
         admin.addEventListener('click', () => {
-          setAdminPopup(imgUrl, element.user.first_name, element.custom_title, element.user.username);
+          setAdminPopup(imgUrl, element.user.first_name, element.custom_title, element.user.id, element.user.username);
         });
       });
     });
   });
 });
 
-function setAdminPopup(img, name, castomName, userName) {
+function setAdminPopup(img, name, castomName, userId, userName) {
   let windowHeight = window.innerHeight;
   let popupHeight = popup.offsetHeight;
   let scrollY = window.scrollY;
@@ -93,10 +93,10 @@ function setAdminPopup(img, name, castomName, userName) {
     popupAdminPhoto.classList.add('admin-list__vip-user');
   }
 
-  fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userName.toLowerCase()}`).then(response => response.json()).then(description => {
+  fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userId}`).then(response => response.json()).then(description => {
     adminDescription.textContent = description;
     popup.classList.remove('popup--hidden');
-  });
+  }).catch(err => console.log(err));
 }
 
 /***/ }),
