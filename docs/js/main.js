@@ -51,11 +51,11 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList").then(request =>
         adminPhoto.classList.add("admin-list__photo");
         adminPhoto.src = imgUrl;
 
-        if (element.user.username == 'LiveIsAbsurd') {
+        if (element.user.id == '261749882') {
           adminPhoto.classList.add('admin-list__vip-user');
         }
 
-        if (element.user.username == "yorigami") {
+        if (element.user.id == "300711096") {
           adminPhoto.classList.add('admin-list__slaziet');
         }
 
@@ -94,11 +94,11 @@ function setAdminPopup(img, name, castomName, userId, userName) {
   popupAdminName.href = `https://${userName}.t.me`;
   popupAdminCastomName.textContent = castomName;
 
-  if (userName == 'LiveIsAbsurd') {
+  if (userId == '261749882') {
     popupAdminPhoto.classList.add('admin-list__vip-user');
   }
 
-  if (userName == "yorigami") {
+  if (userId == "300711096") {
     popupAdminPhoto.classList.add('admin-list__slaziet');
   }
 
