@@ -9,6 +9,7 @@ const popupClose = popup.querySelector('.popup__close-button');
 popupClose.addEventListener('click', () => {
     popup.classList.add('popup--hidden');
     popupAdminPhoto.classList.remove('admin-list__vip-user');
+    popupAdminPhoto.classList.remove('admin-list__slaziet');
 });
 
 fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
@@ -34,6 +35,10 @@ fetch('https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList')
 
                             if (element.user.username == 'LiveIsAbsurd') {
                                 adminPhoto.classList.add('admin-list__vip-user');
+                            }
+
+                            if (element.user.username == "yorigami") {
+                                adminPhoto.classList.add('admin-list__slaziet');
                             }
 
                             admin.appendChild(adminPhoto);
@@ -82,6 +87,10 @@ function setAdminPopup (img, name, castomName, userName) {
 
     if (userName == 'LiveIsAbsurd') {
         popupAdminPhoto.classList.add('admin-list__vip-user');
+    }
+    
+    if (userName == "yorigami") {
+        popupAdminPhoto.classList.add('admin-list__slaziet');
     }
 
     fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userName.toLowerCase()}`)
