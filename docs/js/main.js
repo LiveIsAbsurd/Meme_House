@@ -46,7 +46,7 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState").then(request =>
     userLink.textContent = el.userName ? el.userName : el.userFirstName;
 
     if (el.userName) {
-      userLink.href = `${el.userName}.t.me`;
+      userLink.href = `https://${el.userName}.t.me`;
     }
 
     count.textContent = el.count;
