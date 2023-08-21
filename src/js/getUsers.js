@@ -9,4 +9,5 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendUsersCount")
     }!`;
     chatMembersCount.style = "margin-top: 5px";
     header.appendChild(chatMembersCount);
-  });
+  })
+  .catch(() => alert("Сервер упал :("))
