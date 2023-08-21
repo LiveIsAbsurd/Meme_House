@@ -21,6 +21,46 @@ buttonMoreDescription.addEventListener("click", e => {
 
 /***/ }),
 
+/***/ "./js/chatState.js":
+/*!*************************!*\
+  !*** ./js/chatState.js ***!
+  \*************************/
+/***/ (() => {
+
+const table = document.querySelector(".message-state");
+const count = document.querySelector(".message-state-count");
+fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState").then(request => request.json()).then(data => {
+  count.textContent = data.totalMessage;
+  let state = Object.values(data.userMessage);
+  let stateTable = document.createDocumentFragment();
+  state.sort((a, b) => {
+    return b.count - a.count;
+  });
+  state.forEach((el, index) => {
+    let tr = document.createElement("tr");
+    let num = document.createElement("td");
+    let user = document.createElement("td");
+    let count = document.createElement("td");
+    let userLink = document.createElement("a");
+    num.textContent = index + 1;
+    userLink.textContent = el.userName ? el.userName : el.userFirstName;
+
+    if (el.userName) {
+      userLink.href = `${el.userName}.t.me`;
+    }
+
+    count.textContent = el.count;
+    user.appendChild(userLink);
+    tr.appendChild(num);
+    tr.appendChild(user);
+    tr.appendChild(count);
+    stateTable.appendChild(tr);
+  });
+  table.appendChild(stateTable);
+});
+
+/***/ }),
+
 /***/ "./js/getAdministrators.js":
 /*!*********************************!*\
   !*** ./js/getAdministrators.js ***!
@@ -37,7 +77,7 @@ const popupClose = popup.querySelector(".popup__close-button");
 popupClose.addEventListener("click", () => {
   popup.classList.add("popup--hidden");
   popupAdminPhoto.classList.remove("admin-list__vip-user");
-  popupAdminPhoto.classList.remove('admin-list__slaziet');
+  popupAdminPhoto.classList.remove("admin-list__slaziet");
 });
 fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList").then(request => request.json()).then(admins => {
   admins.result.forEach(element => {
@@ -51,12 +91,12 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList").then(request =>
         adminPhoto.classList.add("admin-list__photo");
         adminPhoto.src = imgUrl;
 
-        if (element.user.id == '261749882') {
-          adminPhoto.classList.add('admin-list__vip-user');
+        if (element.user.id == "261749882") {
+          adminPhoto.classList.add("admin-list__vip-user");
         }
 
         if (element.user.id == "300711096") {
-          adminPhoto.classList.add('admin-list__slaziet');
+          adminPhoto.classList.add("admin-list__slaziet");
         }
 
         admin.appendChild(adminPhoto);
@@ -94,12 +134,12 @@ function setAdminPopup(img, name, castomName, userId, userName) {
   popupAdminName.href = `https://${userName}.t.me`;
   popupAdminCastomName.textContent = castomName;
 
-  if (userId == '261749882') {
-    popupAdminPhoto.classList.add('admin-list__vip-user');
+  if (userId == "261749882") {
+    popupAdminPhoto.classList.add("admin-list__vip-user");
   }
 
   if (userId == "300711096") {
-    popupAdminPhoto.classList.add('admin-list__slaziet');
+    popupAdminPhoto.classList.add("admin-list__slaziet");
   }
 
   fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userId}`).then(response => response.json()).then(description => {
@@ -122,7 +162,7 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendUsersCount").then(request =
   chatMembersCount.textContent = `Нас уже ${data.result}, стань ${data.result + 1}!`;
   chatMembersCount.style = "margin-top: 5px";
   header.appendChild(chatMembersCount);
-});
+}).catch(() => alert("Сервер упал :("));
 
 /***/ }),
 
@@ -144,6 +184,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _getUsers__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_getUsers__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _getAdministrators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./getAdministrators */ "./js/getAdministrators.js");
 /* harmony import */ var _getAdministrators__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_getAdministrators__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _chatState__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./chatState */ "./js/chatState.js");
+/* harmony import */ var _chatState__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_chatState__WEBPACK_IMPORTED_MODULE_7__);
+
 
 
 
@@ -202,7 +245,7 @@ var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
 var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_1___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n    </div>\r\n    <div class=\"popup popup--hidden\">\r\n        <button class=\"popup__close-button\"></button>\r\n        <div class=\"popup__admin-info\">\r\n            <img  class=\"popup__admin-photo\"></img>\r\n            <div class=\"popup__admin-names\">\r\n                <a href = '#' class=\"popup__admin-name\">Тестds gdsgdsg</a>\r\n                <p class=\"popup__admin-castomName\">Тестdsgd sgdsgds</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"popup__wrapper\">\r\n            <h2 class=\"popup__admin-desc-header\">Немного об админе</h2>\r\n            <p class=\"popup__admin-description\"></p>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>";
+var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_1___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n\r\n        <h2 class=\"main-container__header\">Статистика чата</h2>\r\n        <p class=\"main-container__description\">Всего сообщений с 27.07.2023: <span class=\"message-state-count\">Нет данных</span></p>\r\n        <div class=\"state-wrapper state-wrapper__hidden\">\r\n            <table class=\"message-state\">\r\n                <tr>\r\n                    <th>№</th>\r\n                    <th>Имя</th>\r\n                    <th>Сообщений</th>\r\n                </tr>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <div class=\"popup popup--hidden\">\r\n        <button class=\"popup__close-button\"></button>\r\n        <div class=\"popup__admin-info\">\r\n            <img  class=\"popup__admin-photo\"></img>\r\n            <div class=\"popup__admin-names\">\r\n                <a href = '#' class=\"popup__admin-name\">Тестds gdsgdsg</a>\r\n                <p class=\"popup__admin-castomName\">Тестdsgd sgdsgds</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"popup__wrapper\">\r\n            <h2 class=\"popup__admin-desc-header\">Немного об админе</h2>\r\n            <p class=\"popup__admin-description\"></p>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 

@@ -1,8 +1,11 @@
 const table = document.querySelector(".message-state");
+const count = document.querySelector(".message-state-count");
 
 fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState")
     .then(request => request.json())
     .then(data => {
+        count.textContent = data.totalMessage;
+        
         let state = Object.values(data.userMessage);
         let stateTable = document.createDocumentFragment();
 
@@ -15,11 +18,16 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState")
             let num = document.createElement("td");
             let user = document.createElement("td");
             let count = document.createElement("td");
+            let userLink = document.createElement("a");
             
             num.textContent = index + 1;
-            user.textContent = el.userName ? el.userName : el.userFirstName;
+            userLink.textContent = el.userName ? el.userName : el.userFirstName;
+            if (el.userName) {
+                userLink.href = `${el.userName}.t.me`;
+            }
             count.textContent = el.count;
 
+            user.appendChild(userLink);
             tr.appendChild(num);
             tr.appendChild(user);
             tr.appendChild(count);
@@ -28,5 +36,4 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState")
         })
 
         table.appendChild(stateTable);
-        console.log(state)
     });

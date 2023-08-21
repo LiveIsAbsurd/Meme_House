@@ -237,5 +237,31 @@ body {
     .popup__admin-names {
       font-size: 40px; } }
 
+.message-state {
+  margin-top: 10px;
+  border-collapse: collapse;
+  width: 50%;
+  margin: 0 auto;
+  font-family: Zlusa;
+  font-size: 25px;
+  color: white; }
+  .message-state th {
+    font-weight: 400;
+    border: 1px solid white; }
+  .message-state td {
+    border: 1px solid white;
+    text-align: center; }
+    .message-state td a {
+      color: white; }
+  .message-state-count {
+    font-size: 30px;
+    color: #ff0000; }
+
+.state-wrapper {
+  margin-bottom: 20px; }
+  .state-wrapper__hidden {
+    height: 180px;
+    overflow: hidden; }
+
 
 /*# sourceMappingURL=main.css.map*/
