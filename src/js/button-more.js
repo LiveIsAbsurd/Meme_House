@@ -17,7 +17,7 @@ stateButton.addEventListener("click", () => {
   tableWrapper.classList.toggle("state-wrapper__hidden");
 
   if (stateButton.textContent == "А ЕЩЁ?") {
-    stateButton.textContent == "Скрыть?"
+    stateButton.textContent = "СКРЫТЬ"
   } else {
     stateButton.textContent = "А ЕЩЁ?"
   }
