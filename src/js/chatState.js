@@ -19,13 +19,23 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState")
             let user = document.createElement("td");
             let count = document.createElement("td");
             let userLink = document.createElement("a");
+            let stateNum = index + 1;
             
-            num.textContent = index + 1;
+            if (stateNum == 1) {
+                tr.classList.add("message-state__gold-user");
+            } else if (stateNum == 2) {
+                tr.classList.add("message-state__silver-user");
+            } else if (stateNum == 3) {
+                tr.classList.add("message-state__platinum-user");
+            }
+            
+            num.textContent = stateNum;
             userLink.textContent = el.userName ? el.userName : el.userFirstName;
             if (el.userName) {
                 userLink.href = `https://${el.userName}.t.me`;
+                user.classList.add("message-state__user");
             }
-            count.textContent = el.count;
+            count.textContent = `${el.count}/${Math.floor(el.count/data.totalMessage * 100)}%`;
 
             user.appendChild(userLink);
             tr.appendChild(num);

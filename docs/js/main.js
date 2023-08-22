@@ -9,6 +9,8 @@
 
 const buttonMoreDescription = document.querySelector(".button-description");
 const mainDescription = document.querySelector(".main-container__description");
+const tableWrapper = document.querySelector(".state-wrapper");
+const stateButton = document.querySelector(".message-state__button");
 buttonMoreDescription.addEventListener("click", e => {
   mainDescription.classList.toggle("main-container__description--hidden");
 
@@ -16,6 +18,15 @@ buttonMoreDescription.addEventListener("click", e => {
     buttonMoreDescription.textContent = "А ПОДРОБНЕЕ?";
   } else {
     buttonMoreDescription.textContent = "СКРЫТЬ";
+  }
+});
+stateButton.addEventListener("click", () => {
+  tableWrapper.classList.toggle("state-wrapper__hidden");
+
+  if (stateButton.textContent == "А ЕЩЁ?") {
+    stateButton.textContent == "Скрыть?";
+  } else {
+    stateButton.textContent = "А ЕЩЁ?";
   }
 });
 
@@ -42,14 +53,25 @@ fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState").then(request =>
     let user = document.createElement("td");
     let count = document.createElement("td");
     let userLink = document.createElement("a");
-    num.textContent = index + 1;
+    let stateNum = index + 1;
+
+    if (stateNum == 1) {
+      tr.classList.add("message-state__gold-user");
+    } else if (stateNum == 2) {
+      tr.classList.add("message-state__silver-user");
+    } else if (stateNum == 3) {
+      tr.classList.add("message-state__platinum-user");
+    }
+
+    num.textContent = stateNum;
     userLink.textContent = el.userName ? el.userName : el.userFirstName;
 
     if (el.userName) {
       userLink.href = `https://${el.userName}.t.me`;
+      user.classList.add("message-state__user");
     }
 
-    count.textContent = el.count;
+    count.textContent = `${el.count}/${Math.floor(el.count / data.totalMessage * 100)}%`;
     user.appendChild(userLink);
     tr.appendChild(num);
     tr.appendChild(user);
@@ -247,7 +269,7 @@ var ___HTML_LOADER_IMPORT_2___ = new URL(/* asset import */ __webpack_require__(
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
 var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
 var ___HTML_LOADER_REPLACEMENT_2___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_2___);
-var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/png\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_2___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n\r\n        <h2 class=\"main-container__header\">Статистика чата</h2>\r\n        <p class=\"main-container__description\">Всего сообщений с 27.07.2023: <span class=\"message-state-count\">Нет данных</span></p>\r\n        <div class=\"state-wrapper state-wrapper__hidden\">\r\n            <table class=\"message-state\">\r\n                <tr>\r\n                    <th>№</th>\r\n                    <th>Имя</th>\r\n                    <th>Сообщений</th>\r\n                </tr>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <div class=\"popup popup--hidden\">\r\n        <button class=\"popup__close-button\"></button>\r\n        <div class=\"popup__admin-info\">\r\n            <img  class=\"popup__admin-photo\"></img>\r\n            <div class=\"popup__admin-names\">\r\n                <a href = '#' class=\"popup__admin-name\">Тестds gdsgdsg</a>\r\n                <p class=\"popup__admin-castomName\">Тестdsgd sgdsgds</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"popup__wrapper\">\r\n            <h2 class=\"popup__admin-desc-header\">Немного об админе</h2>\r\n            <p class=\"popup__admin-description\"></p>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>";
+var code = "<!DOCTYPE html>\r\n<html lang=\"ru\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <link rel=\"icon\" href=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\" type=\"image/png\">\r\n    <title>Meme house (сайт)</title>\r\n</head>\r\n<body class=\"body\">\r\n    <div class=\"header-container\">\r\n        <img src=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" alt=\"\" class=\"header-container__image\">\r\n        <h1>Meme_House (дом) <br> Чат для постинга мемов и общения с собственной NFT коллекцией и конкурсами.</h1>\r\n    </div>\r\n    <a href=\"https://t.me/meme_house_chat\"><img src='" + ___HTML_LOADER_REPLACEMENT_2___ + "' class=\"link-logo\"></img></a>\r\n\r\n    <div class=\"main-container\">\r\n        <div class=\"main-container__description main-container__description--hidden\">\r\n            <p>Чат созданный для общения, обмена важными новостями, мемами, музыкой и всем чем угодно. Постоянный контроль чата администраторами позволяет исключить рекламных ботов в чате и остальных негативных факторов, которыми кишат чаты. Филосовская элита чата всегда поддержит твои мысли о бессмысленности жизни, а ценитили музыки по полочкам разложат твой музыкальный вкус.</p>\r\n            <h2>В чате присутсвуют строго расписанные правила и обязанности каждого участника</h2>\r\n        </div>\r\n        \r\n        <button class=\"more-button button-description\">А ПОДРОБНЕЕ?</button>\r\n        <h2 class=\"main-container__header\">Главные админы</h2>\r\n        <ul class=\"admin-list\">\r\n            \r\n        </ul>\r\n\r\n        <h2 class=\"main-container__header\">Статистика чата</h2>\r\n        <p class=\"main-container__description\">Всего сообщений с 27.07.2023: <span class=\"message-state-count\">Нет данных</span></p>\r\n        <div class=\"state-wrapper state-wrapper__hidden\">\r\n            <table class=\"message-state\">\r\n                <tr>\r\n                    <th>№</th>\r\n                    <th>Имя</th>\r\n                    <th>Сообщений</th>\r\n                </tr>\r\n            </table>\r\n        </div>\r\n        <button class=\"more-button message-state__button\">А ЕЩЁ?</button>\r\n    </div>\r\n    <div class=\"popup popup--hidden\">\r\n        <button class=\"popup__close-button\"></button>\r\n        <div class=\"popup__admin-info\">\r\n            <img  class=\"popup__admin-photo\"></img>\r\n            <div class=\"popup__admin-names\">\r\n                <a href = '#' class=\"popup__admin-name\">Тестds gdsgdsg</a>\r\n                <p class=\"popup__admin-castomName\">Тестdsgd sgdsgds</p>\r\n            </div>\r\n        </div>\r\n        <div class=\"popup__wrapper\">\r\n            <h2 class=\"popup__admin-desc-header\">Немного об админе</h2>\r\n            <p class=\"popup__admin-description\"></p>\r\n        </div>\r\n    </div>\r\n</body>\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
