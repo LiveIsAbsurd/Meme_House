@@ -1,7 +1,7 @@
 const table = document.querySelector(".message-state");
 const count = document.querySelector(".message-state-count");
 
-fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState")
+fetch("https://v3789.hosted-by-vdsina.com:3001/sendChatState")
     .then(request => request.json())
     .then(data => {
         count.textContent = data.totalMessage;

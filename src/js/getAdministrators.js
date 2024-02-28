@@ -12,19 +12,19 @@ popupClose.addEventListener("click", () => {
   popupAdminPhoto.classList.remove("admin-list__slaziet");
 });
 
-fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList")
+fetch("https://v3789.hosted-by-vdsina.com:3001/sendAdminList")
   .then((request) => request.json())
   .then((admins) => {
     admins.result.forEach((element) => {
       fetch(
-        `https://v2009105.hosted-by-vdsina.ru:3001/sendAdminInfo/${element.user.id}`
+        `https://v3789.hosted-by-vdsina.com:3001/sendAdminInfo/${element.user.id}`
       )
         .then((response) => response.json())
         .then((data) => {
           const photoInfo = data.result.photos[0][0];
 
           fetch(
-            `https://v2009105.hosted-by-vdsina.ru:3001/sendAdminPhotoInfo/${photoInfo.file_id}`
+            `https://v3789.hosted-by-vdsina.com:3001/sendAdminPhotoInfo/${photoInfo.file_id}`
           )
             .then((response) => response.blob())
             .then((img) => {
@@ -100,7 +100,7 @@ function setAdminPopup(img, name, castomName, userId, userName) {
   }
 
   fetch(
-    `https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userId}`
+    `https://v3789.hosted-by-vdsina.com:3001/sendAdminDescription/${userId}`
   )
     .then((response) => response.json())
     .then((description) => {
