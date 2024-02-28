@@ -245,11 +245,20 @@ body {
   font-family: Zlusa;
   font-size: 25px;
   color: white; }
+  .message-state__gold-user {
+    background-color: rgba(229, 255, 0, 0.4); }
+  .message-state__silver-user {
+    background-color: rgba(169, 169, 169, 0.4); }
+  .message-state__platinum-user {
+    background-color: rgba(232, 162, 49, 0.4); }
+  .message-state__user:hover {
+    opacity: 0.5;
+    transition: all 0.5s; }
   .message-state th {
     font-weight: 400;
-    border: 1px solid white; }
+    border-top: 1px solid rgba(255, 255, 255, 0.5); }
   .message-state td {
-    border: 1px solid white;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center; }
     .message-state td a {
       color: white; }
