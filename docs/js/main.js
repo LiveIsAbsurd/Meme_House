@@ -40,7 +40,7 @@ stateButton.addEventListener("click", () => {
 
 const table = document.querySelector(".message-state");
 const count = document.querySelector(".message-state-count");
-fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendChatState").then(request => request.json()).then(data => {
+fetch("https://v3789.hosted-by-vdsina.com:3001/sendChatState").then(request => request.json()).then(data => {
   count.textContent = data.totalMessage;
   let state = Object.values(data.userMessage);
   let stateTable = document.createDocumentFragment();
@@ -101,11 +101,11 @@ popupClose.addEventListener("click", () => {
   popupAdminPhoto.classList.remove("admin-list__vip-user");
   popupAdminPhoto.classList.remove("admin-list__slaziet");
 });
-fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendAdminList").then(request => request.json()).then(admins => {
+fetch("https://v3789.hosted-by-vdsina.com:3001/sendAdminList").then(request => request.json()).then(admins => {
   admins.result.forEach(element => {
-    fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
+    fetch(`https://v3789.hosted-by-vdsina.com:3001/sendAdminInfo/${element.user.id}`).then(response => response.json()).then(data => {
       const photoInfo = data.result.photos[0][0];
-      fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminPhotoInfo/${photoInfo.file_id}`).then(response => response.blob()).then(img => {
+      fetch(`https://v3789.hosted-by-vdsina.com:3001/sendAdminPhotoInfo/${photoInfo.file_id}`).then(response => response.blob()).then(img => {
         const imgUrl = URL.createObjectURL(img);
         const admin = document.createElement("li");
         admin.classList.add("admin-list__element");
@@ -164,7 +164,7 @@ function setAdminPopup(img, name, castomName, userId, userName) {
     popupAdminPhoto.classList.add("admin-list__slaziet");
   }
 
-  fetch(`https://v2009105.hosted-by-vdsina.ru:3001/sendAdminDescription/${userId}`).then(response => response.json()).then(description => {
+  fetch(`https://v3789.hosted-by-vdsina.com:3001/sendAdminDescription/${userId}`).then(response => response.json()).then(description => {
     adminDescription.textContent = description;
     popup.classList.remove("popup--hidden");
   }).catch(err => console.log(err));
@@ -180,7 +180,7 @@ function setAdminPopup(img, name, castomName, userId, userName) {
 
 const header = document.querySelector(".header-container").querySelector("h1");
 const chatMembersCount = document.createElement("p");
-fetch("https://v2009105.hosted-by-vdsina.ru:3001/sendUsersCount").then(request => request.json()).then(data => {
+fetch("https://v3789.hosted-by-vdsina.com:3001/sendUsersCount").then(request => request.json()).then(data => {
   chatMembersCount.textContent = `Нас уже ${data.result}, стань ${data.result + 1}!`;
   chatMembersCount.style = "margin-top: 5px";
   header.appendChild(chatMembersCount);
