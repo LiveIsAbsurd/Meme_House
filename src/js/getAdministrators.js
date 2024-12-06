@@ -16,6 +16,7 @@ fetch("https://v3789.hosted-by-vdsina.com:3001/sendAdminList")
   .then((request) => request.json())
   .then((admins) => {
     admins.result.forEach((element) => {
+      console.log(admins[0])
       fetch(
         `https://v3789.hosted-by-vdsina.com:3001/sendAdminInfo/${element.user.id}`
       )
